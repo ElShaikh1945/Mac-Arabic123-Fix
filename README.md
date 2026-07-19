@@ -1,6 +1,6 @@
 # Mac-Arabic123-Fix
 
-[![Platform: macOS](https://img.shields.io/badge/Platform-macOS-blue.svg?logo=apple)](https://www.apple.com/macos/)
+[![Platform: macOS](https://img.shields.io/badge/platform-macOS-black?logo=apple)](https://www.apple.com/os/macos/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Language: Arabic](https://img.shields.io/badge/Language-Arabic-red.svg)](#)
 
