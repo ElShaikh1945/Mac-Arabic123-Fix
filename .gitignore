@@ -1,0 +1,5 @@
+# macOS system files
+.DS_Store
+
+# Installation diagnostic logs
+install_debug.log
