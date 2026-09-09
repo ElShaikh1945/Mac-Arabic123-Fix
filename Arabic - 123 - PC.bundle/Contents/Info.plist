@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>Arabic - 123 - PC</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>KLInfo_Arabic - 123 - PC</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
@@ -17,5 +17,9 @@
 		<key>TISIntendedLanguage</key>
 		<string>ar</string>
 	</dict>
+	<key>CFBundleGetInfoString</key>
+	<string>Mac-Arabic123-Fix 1.0.1, Developed by Muhammad El-Shaikh (github.com/ElShaikh1945)</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 Muhammad El-Shaikh. All rights reserved.</string>
 </dict>
 </plist>

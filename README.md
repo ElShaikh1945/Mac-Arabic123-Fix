@@ -3,8 +3,9 @@
 [![Platform: macOS](https://img.shields.io/badge/Platform-macOS-blue.svg?logo=apple)](https://www.apple.com/macos/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Language: Arabic](https://img.shields.io/badge/Language-Arabic-red.svg)](#)
+[![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-green.svg)](#)
 
-A custom Arabic keyboard layout (PC Layout) for macOS that types standard Arabic/Western digits (`123`) instead of Eastern Arabic/Indian digits (`١٢٣`).
+A custom Arabic keyboard layout (PC Layout) for macOS that types standard Arabic/Western digits (`123`) instead of Eastern Arabic/Indian digits (`١٢٣`). Supports **both the top number row and the Numpad**.
 
 *Arabic version: [README_Arabic.md](README_Arabic.md)*
 
@@ -20,44 +21,101 @@ A custom Arabic keyboard layout (PC Layout) for macOS that types standard Arabic
 
 ---
 
+## Features
+
+- ✅ **Standard Digits (123)** on both top row keys and Numpad keys.
+- ✅ **Universal Binary**: Native support for both Apple Silicon (M1/M2/M3/M4) and Intel (`x86_64`) Macs.
+- ✅ **Duplicate Prevention & Overwrite Confirmation**: Detects existing installations and offers a clean overwrite to prevent duplicate entries in macOS System Settings.
+- ✅ **Bilingual Localization**: Native Arabic (`ar.lproj`) and English (`en.lproj`) bundle localization.
+- ✅ **Dual-Mode High-Contrast Icon**: Redesigned crisp badge ensuring crystal-clear visibility in Dark Mode, Light Mode, and the macOS blue Switcher HUD (Cmd+Space / Globe key).
+- ✅ **Dedicated Clean Uninstaller (`uninstall.command`)**: Interactive one-click complete removal of the layout and automatic cache cleanup.
+- ✅ **Interactive Terminal UI** with blue-highlighted arrow-key navigation menus (↑/↓ + Enter).
+- ✅ **Strict Language Mode**: After choosing Arabic or English, all installer text strictly follows your choice — no mixed languages.
+- ✅ **Post-Install Verification Guide** with sample test phrases to confirm the layout works correctly.
+- ✅ **Multi-Select Checklist** to selectively remove old Arabic keyboard layouts after installation.
+- ✅ **Automatic Activation**: The installer copies, enables, and switches to the new layout automatically.
+- ✅ **Smart Fallback**: If system-wide installation fails, the installer offers personal installation as an alternative.
+
+---
+
 ## Installation Methods
+
+> [!TIP]
+> **First-Time Launch on macOS:** If macOS shows a security warning ("unidentified developer"), use one of these quick methods:
+> 1. **One-line Terminal command (Quickest):** Run inside the folder:
+>    ```bash
+>    xattr -cr . && ./install.command
+>    ```
+> 2. **Right-click** the file → select **Open** → click **Open** in the dialog.
+> 3. Go to **System Settings > Privacy & Security** → click **Open Anyway**.
+
+> [!NOTE]
+> **FileVault & Startup Login Screen:** If your Mac has FileVault encryption enabled, macOS cannot access user-level layouts before you log in after a cold restart. Choose **System-wide installation** if you need this layout available on the startup login screen.
 
 > [!IMPORTANT]
 > **Automatic Activation:** The double-click installer below will automatically copy the layout files, enable the keyboard source in macOS settings, and select/switch to it. No manual setup is needed!
-> 
+>
 > **If the layout does not work immediately:** You may need to restart your Mac to clear the macOS keyboard layout cache.
 
 ### 1. Automated Installation via Double-Click (Recommended)
 To make installation seamless, a single double-clickable installer script is provided:
 
 * **File:** `install.command`
-* **Description:** Once opened, it will ask you for your preferred language and then let you choose between:
-  1. **Personal Installation:** Installs the layout under your user directory (`~/Library/Keyboard Layouts`). Safe, easy, and requires no administrator password.
-  2. **System-wide Installation:** Installs the layout for all users and the login screen (`/Library/Keyboard Layouts`). Requires your administrator password.
+* **Description:** Once opened, it will:
+  1. Display an interactive language selection menu (Arabic / English) with blue-highlighted arrow-key navigation.
+  2. Let you choose between Personal or System-wide installation using the same interactive menu.
+  3. Install the keyboard layout automatically with a visual progress bar.
+  4. Display a verification guide with sample test phrases.
+  5. Offer a multi-select checklist to remove old Arabic keyboard layouts.
 
 #### Steps to Run:
 1. Double-click the `install.command` file in the folder.
-   *(Note: If macOS displays a Gatekeeper warning because the files were downloaded from the internet, right-click the file and choose **Open**, or go to **System Settings > Privacy & Security** and allow it to run).*
-2. A Terminal window will open automatically. Follow the simple prompts to choose your language and installation type.
-3. Once the success message appears, you can safely close the Terminal window.
+2. A Terminal window will open automatically. Use the **↑/↓ arrow keys** and **Enter** to navigate the interactive menus.
+3. Once the success message appears, follow the verification guide to test the layout.
+4. Optionally select old Arabic keyboards to remove.
+5. You can safely close the Terminal window.
 
 ---
 
-### 2. Using the DMG Installer
-1. Open the `Arabic - PC - 123.dmg` file included in the repository.
-2. Run the **Keyboard Installer** app inside it.
-3. Drag and drop the keyboard layout file onto the installer window.
-4. Select **Install for current user**.
-5. Manually activate the keyboard layout (see the Activation section below) and restart your Mac.
-
----
-
-### 3. Manual Installation
+### 2. Manual Installation
 1. Copy the `Arabic - 123 - PC.bundle` directory (which contains both the custom icon and the layout mapping).
 2. Paste it into the following directory:
    `~/Library/Keyboard Layouts`
    *(Or `/Library/Keyboard Layouts` for system-wide installation).*
 3. Follow the manual activation steps below and restart your Mac.
+
+---
+
+## Interactive Installer Features
+
+### Arrow-Key Navigation Menus
+All choices in the installer use interactive menus with:
+- **Blue highlight** on the selected option.
+- **↑/↓ arrow keys** to navigate between options.
+- **Enter** to confirm your selection.
+- Optional **1/2** number keys for quick selection.
+
+### Multi-Select Checklist (Old Layout Cleanup)
+After installation, the installer detects existing Arabic keyboard layouts and presents a checklist:
+- **↑/↓** to navigate between keyboards.
+- **Space** to toggle `[ ]` / `[✓]` selection.
+- **Enter** to confirm and remove selected layouts.
+- Selecting nothing and pressing Enter keeps all layouts unchanged.
+
+### Post-Install Verification Guide
+The installer displays a testing guide with:
+1. **Digit test** (top row + Numpad): Type `1234567890`.
+2. **PC key positions test**: Verify keys like `ذ`, `ط`, `ك`.
+3. **Sample test phrase**: `"Keyboard Test 2026: No. 123 - ذ ط ك - 100%"`
+
+---
+
+## Uninstallation
+To completely remove the keyboard layout from your Mac:
+
+1. Double-click **`uninstall.command`**.
+2. Select your language and confirm uninstallation.
+3. The script will automatically disable the input source, delete all layout bundles, and refresh the macOS keyboard cache.
 
 ---
 
@@ -74,3 +132,5 @@ If the automated installer did not automatically select the keyboard layout, you
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
+
+Copyright © 2026 Muhammad El-Shaikh. All rights reserved.

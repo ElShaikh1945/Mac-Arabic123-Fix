@@ -1,6 +1,13 @@
 #!/bin/bash
+# ============================================================
+# Mac-Arabic123-Fix - Installation Engine
+# Developed by Muhammad El-Shaikh
+# GitHub:  github.com/ElShaikh1945
+# Email:   Muhammad.Al-Shaikh@outlook.com
+# Copyright © 2026 Muhammad El-Shaikh. All rights reserved.
+# ============================================================
 # Script to install the fixed Arabic keyboard layout on macOS
-# Highly automated, with error handling, logging, and automatic cache reload attempts.
+# Highly automated, with error handling, logging, and automatic cache reload.
 
 set -e # Exit immediately if a command exits with a non-zero status
 
@@ -62,10 +69,10 @@ if [ -z "$INSTALL_LANG" ]; then
     INSTALL_LANG="ar"
 
     # Prompt for language selection before redirecting stdout/stderr to avoid buffering
-    echo "${CYAN}${BOLD}اختر لغة التثبيت / Select Installer Language:${NC}"
-    echo "1) العربية (الافتراضية) / Arabic (Default)"
+    echo "${CYAN}${BOLD}${RLE}اختر لغة التثبيت / Select Installer Language:${PDF}${NC}"
+    echo "${RLE}1) العربية (الافتراضية) / Arabic (Default)${PDF}"
     echo "2) English"
-    printf "اختر / Choose (1-2): "
+    printf "${RLE}اختر / Choose (1-2): ${PDF}"
     read -r LANG_CHOICE
 
     if [ "$LANG_CHOICE" = "2" ]; then
@@ -194,6 +201,48 @@ SOURCE_BUNDLE="$SCRIPT_DIR/Arabic - 123 - PC.bundle"
 # Installation Steps with Progress Bar
 # ==============================
 
+# Check if layout already exists and confirm overwrite if not pre-confirmed
+if [ -z "$OVERWRITE_CONFIRMED" ]; then
+    EXISTING_FOUND=0
+    if [ -d "$DEST_DIR/Arabic - 123 - PC.bundle" ] || [ -f "$DEST_DIR/Arabic - PC - 123.keylayout" ] || \
+       [ -d "$HOME/Library/Keyboard Layouts/Arabic - 123 - PC.bundle" ] || [ -f "$HOME/Library/Keyboard Layouts/Arabic - PC - 123.keylayout" ]; then
+        EXISTING_FOUND=1
+    fi
+    if [ "$EXISTING_FOUND" -eq 0 ]; then
+        if [ -x "$SCRIPT_DIR/enable_layout" ]; then
+            if "$SCRIPT_DIR/enable_layout" --check-installed >/dev/null 2>&1; then
+                EXISTING_FOUND=1
+            fi
+        fi
+    fi
+
+    if [ "$EXISTING_FOUND" -eq 1 ] && [ -t 0 ]; then
+        echo ""
+        if [ "$INSTALL_LANG" = "ar" ]; then
+            echo "${YELLOW}${BOLD}==========================================================${NC}"
+            echo "${YELLOW}${BOLD}${RLE}تنبيه: تم العثور على نسخة سابقة من لوحة المفاتيح (Arabic - 123 - PC).${PDF}${NC}"
+            echo "${RLE}لتفادي وجود لوحات مكررة، سيقوم المثبت باستبدال وتحديث اللوحة القديمة.${PDF}"
+            printf "${RLE}هل تريد المتابعة والاستبدال؟ (y/n) [الافتراضي y]: ${PDF}"
+        else
+            echo "${YELLOW}${BOLD}==========================================================${NC}"
+            echo "${YELLOW}${BOLD}Notice: A previous version of 'Arabic - 123 - PC' is already installed.${NC}"
+            echo "To avoid duplicated keyboards, the installer will cleanly overwrite and update it."
+            printf "Do you want to proceed and overwrite? (y/n) [Default y]: "
+        fi
+        read -r CONFIRM_ANS
+        CONFIRM_ANS=$(echo "$CONFIRM_ANS" | tr '[:upper:]' '[:lower:]')
+        if [ "$CONFIRM_ANS" = "n" ] || [ "$CONFIRM_ANS" = "no" ]; then
+            if [ "$INSTALL_LANG" = "ar" ]; then
+                echo "${BLUE}${RLE}تم إلغاء التثبيت بناءً على طلبك.${PDF}${NC}"
+            else
+                echo "${BLUE}Installation cancelled by user.${NC}"
+            fi
+            exit 0
+        fi
+        echo ""
+    fi
+fi
+
 # Step 1: Verify OS and source files
 if [ "$(uname)" != "Darwin" ]; then
     echo "${RED}${BOLD}${MSG_OS_ERROR}${NC}"
@@ -207,11 +256,25 @@ fi
 show_step "$MSG_STEP_VERIFY"
 
 # Step 2: Clean old installation files
-rm -rf "$HOME/Library/Keyboard Layouts/Arabic - PC - 123.keylayout"
-rm -rf "$HOME/Library/Keyboard Layouts/Arabic - 123 - PC.bundle"
+rm -rf "$HOME/Library/Keyboard Layouts/Arabic - PC - 123.keylayout" 2>/dev/null || true
+rm -rf "$HOME/Library/Keyboard Layouts/Arabic - 123 - PC.bundle" 2>/dev/null || true
 if [ "$EUID" -eq 0 ]; then
-    rm -rf "/Library/Keyboard Layouts/Arabic - PC - 123.keylayout"
-    rm -rf "/Library/Keyboard Layouts/Arabic - 123 - PC.bundle"
+    rm -rf "/Library/Keyboard Layouts/Arabic - PC - 123.keylayout" 2>/dev/null || true
+    rm -rf "/Library/Keyboard Layouts/Arabic - 123 - PC.bundle" 2>/dev/null || true
+else
+    # Cross-scope cleanup: warn and remove system-level duplicates to prevent ghosts
+    if [ -d "/Library/Keyboard Layouts/Arabic - 123 - PC.bundle" ] || [ -f "/Library/Keyboard Layouts/Arabic - PC - 123.keylayout" ]; then
+        echo ""
+        if [ "$INSTALL_LANG" = "ar" ]; then
+            echo "${YELLOW}${BOLD}${RLE}تنبيه: تم العثور على نسخة سابقة من اللوحة مثبتة على مستوى النظام (/Library).${PDF}${NC}"
+            echo "${RLE}لتفادي ظهور لوحات مكررة، يرجى إدخال كلمة مرور الماك لحذف النسخة القديمة من مجلد النظام:${PDF}"
+        else
+            echo "${YELLOW}${BOLD}Notice: A system-wide copy of the layout was found in /Library.${NC}"
+            echo "To prevent duplicate keyboards, please enter your Mac password to remove it:"
+        fi
+        sudo rm -rf "/Library/Keyboard Layouts/Arabic - 123 - PC.bundle" 2>/dev/null || true
+        sudo rm -rf "/Library/Keyboard Layouts/Arabic - PC - 123.keylayout" 2>/dev/null || true
+    fi
 fi
 show_step "$MSG_STEP_CLEAN"
 
@@ -236,11 +299,29 @@ sleep 1.5
 show_step "$MSG_STEP_CACHE"
 
 # Step 6: Activate keyboard layout
-if command -v xcrun >/dev/null 2>&1 && xcrun --find swift >/dev/null 2>&1; then
+ACTIVATED=false
+if [ -x "$SCRIPT_DIR/enable_layout" ]; then
     if [ "$EUID" -eq 0 ] && [ -n "$SUDO_USER" ]; then
-        sudo -u "$SUDO_USER" xcrun swift "$SCRIPT_DIR/enable_layout.swift" 2>>"$LOG_FILE" || true
+        if sudo -u "$SUDO_USER" "$SCRIPT_DIR/enable_layout" 2>>"$LOG_FILE"; then
+            ACTIVATED=true
+        fi
     else
-        xcrun swift "$SCRIPT_DIR/enable_layout.swift" 2>>"$LOG_FILE" || true
+        if "$SCRIPT_DIR/enable_layout" 2>>"$LOG_FILE"; then
+            ACTIVATED=true
+        fi
+    fi
+fi
+
+if [ "$ACTIVATED" != "true" ]; then
+    if command -v xcrun >/dev/null 2>&1 && xcrun --find swift >/dev/null 2>&1; then
+        if [ "$EUID" -eq 0 ] && [ -n "$SUDO_USER" ]; then
+            sudo -u "$SUDO_USER" xcrun swift "$SCRIPT_DIR/enable_layout.swift" 2>>"$LOG_FILE" || true
+        else
+            xcrun swift "$SCRIPT_DIR/enable_layout.swift" 2>>"$LOG_FILE" || true
+        fi
+    else
+        echo "${YELLOW}${BOLD}${MSG_NO_SWIFT}${NC}"
+        echo "${MSG_NO_SWIFT_MANUAL}"
     fi
 fi
 show_step "$MSG_STEP_ACTIVATE"

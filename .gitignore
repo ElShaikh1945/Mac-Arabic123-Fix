@@ -1,5 +1,11 @@
 # macOS system files
 .DS_Store
 
-# Installation diagnostic logs
+# Installation and diagnostic logs
+*.log
 install_debug.log
+
+# Temporary test binaries and build artifacts
+test_*
+*.o
+scratch/
