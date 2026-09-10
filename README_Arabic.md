@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Language: Arabic](https://img.shields.io/badge/Language-Arabic-red.svg)](#)
 [![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-green.svg)](#)
+[![Downloads](https://img.shields.io/github/downloads/ElShaikh1945/Mac-Arabic123-Fix/total.svg?label=التحميلات&color=brightgreen)](https://github.com/ElShaikh1945/Mac-Arabic123-Fix/releases)
 
 تخطيط لوحة مفاتيح عربي مخصص لنظام macOS يقوم بكتابة الأرقام العربية القياسية (`123`) بدلاً من الأرقام الهندية/الشرقية (`١٢٣`) عند استخدام تخطيط الـ PC. يدعم **الصف العلوي للأرقام ولوحة الأرقام الجانبية (Numpad) معاً**.
 
@@ -69,11 +70,12 @@
   5. عرض قائمة اختيار متعدد لحذف لوحات المفاتيح العربية القديمة.
 
 #### خطوات التشغيل بالنقر:
-1. انقر نقراً مزدوجاً (Double-click) على ملف `install.command`.
-2. سيقوم النظام بفتح نافذة الـ Terminal تلقائياً. استخدم **أسهم ↑/↓** و **Enter** للتنقل في القوائم التفاعلية.
-3. بعد ظهور رسالة النجاح، اتبع دليل الاختبار للتأكد من عمل اللوحة.
-4. اختيارياً، حدد لوحات المفاتيح العربية القديمة المراد حذفها.
-5. يمكنك إغلاق النافذة بأمان.
+1. قم بتحميل أحدث إصدار: [**Mac-Arabic123-Fix-v1.0.1.zip**](https://github.com/ElShaikh1945/Mac-Arabic123-Fix/releases/latest) وفك الضغط عنه.
+2. انقر نقراً مزدوجاً (Double-click) على ملف `install.command`.
+3. سيقوم النظام بفتح نافذة الـ Terminal تلقائياً. استخدم **أسهم ↑/↓** و **Enter** للتنقل في القوائم التفاعلية.
+4. بعد ظهور رسالة النجاح، اتبع دليل الاختبار للتأكد من عمل اللوحة.
+5. اختيارياً، حدد لوحات المفاتيح العربية القديمة المراد حذفها.
+6. يمكنك إغلاق النافذة بأمان.
 
 ---
 

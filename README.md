@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Language: Arabic](https://img.shields.io/badge/Language-Arabic-red.svg)](#)
 [![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-green.svg)](#)
+[![Downloads](https://img.shields.io/github/downloads/ElShaikh1945/Mac-Arabic123-Fix/total.svg?color=brightgreen)](https://github.com/ElShaikh1945/Mac-Arabic123-Fix/releases)
 
 A custom Arabic keyboard layout (PC Layout) for macOS that types standard Arabic/Western digits (`123`) instead of Eastern Arabic/Indian digits (`١٢٣`). Supports **both the top number row and the Numpad**.
 
@@ -69,11 +70,12 @@ To make installation seamless, a single double-clickable installer script is pro
   5. Offer a multi-select checklist to remove old Arabic keyboard layouts.
 
 #### Steps to Run:
-1. Double-click the `install.command` file in the folder.
-2. A Terminal window will open automatically. Use the **↑/↓ arrow keys** and **Enter** to navigate the interactive menus.
-3. Once the success message appears, follow the verification guide to test the layout.
-4. Optionally select old Arabic keyboards to remove.
-5. You can safely close the Terminal window.
+1. Download the latest release: [**Mac-Arabic123-Fix-v1.0.1.zip**](https://github.com/ElShaikh1945/Mac-Arabic123-Fix/releases/latest) and extract it.
+2. Double-click the `install.command` file in the folder.
+3. A Terminal window will open automatically. Use the **↑/↓ arrow keys** and **Enter** to navigate the interactive menus.
+4. Once the success message appears, follow the verification guide to test the layout.
+5. Optionally select old Arabic keyboards to remove.
+6. You can safely close the Terminal window.
 
 ---
 
