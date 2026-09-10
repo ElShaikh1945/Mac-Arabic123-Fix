@@ -216,7 +216,7 @@ echo "${CYAN}${BOLD}               Mac-Arabic123-Fix Installer                ${
 echo "${BLUE}  Developer: Muhammad El-Shaikh                           ${NC}"
 echo "${BLUE}  GitHub:    github.com/ElShaikh1945                      ${NC}"
 echo "${BLUE}  E-Mail:    Muhammad.Al-Shaikh@outlook.com               ${NC}"
-echo "${BLUE}  Version:   1.0.0 (July 2026)                            ${NC}"
+echo "${BLUE}  Version:   1.0.1 (July 2026)                            ${NC}"
 echo "${CYAN}${BOLD}==========================================================${NC}"
 echo ""
 

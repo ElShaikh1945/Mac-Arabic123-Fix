@@ -3,11 +3,11 @@
 [![Platform: macOS](https://img.shields.io/badge/Platform-macOS-blue.svg?logo=apple)](https://www.apple.com/macos/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Language: Arabic](https://img.shields.io/badge/Language-Arabic-red.svg)](#)
-[![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-green.svg)](#)
+[![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-green.svg)](#)
 
 A custom Arabic keyboard layout (PC Layout) for macOS that types standard Arabic/Western digits (`123`) instead of Eastern Arabic/Indian digits (`١٢٣`). Supports **both the top number row and the Numpad**.
 
-*Arabic version: [README_Arabic.md](README_Arabic.md)*
+*النسخة العربية: [README_Arabic.md](README_Arabic.md)*
 
 ---
 
@@ -115,7 +115,8 @@ To completely remove the keyboard layout from your Mac:
 
 1. Double-click **`uninstall.command`**.
 2. Select your language and confirm uninstallation.
-3. The script will automatically disable the input source, delete all layout bundles, and refresh the macOS keyboard cache.
+3. Optionally, select an alternative Arabic keyboard layout to activate automatically before removal.
+4. The script will automatically disable the input source, delete all layout bundles, and refresh the macOS keyboard cache.
 
 ---
 

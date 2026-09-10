@@ -2,7 +2,7 @@ import Carbon
 import Foundation
 
 // ============================================================
-// Mac-Arabic123-Fix v1.0.0
+// Mac-Arabic123-Fix v1.0.1
 // Developed by Muhammad El-Shaikh
 // GitHub:  github.com/ElShaikh1945
 // Email:   Muhammad.Al-Shaikh@outlook.com

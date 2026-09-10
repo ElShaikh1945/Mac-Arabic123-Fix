@@ -3,11 +3,11 @@
 [![Platform: macOS](https://img.shields.io/badge/Platform-macOS-blue.svg?logo=apple)](https://www.apple.com/macos/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Language: Arabic](https://img.shields.io/badge/Language-Arabic-red.svg)](#)
-[![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-green.svg)](#)
+[![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-green.svg)](#)
 
 تخطيط لوحة مفاتيح عربي مخصص لنظام macOS يقوم بكتابة الأرقام العربية القياسية (`123`) بدلاً من الأرقام الهندية/الشرقية (`١٢٣`) عند استخدام تخطيط الـ PC. يدعم **الصف العلوي للأرقام ولوحة الأرقام الجانبية (Numpad) معاً**.
 
-*نسخة إنجليزية: [README.md](README.md)*
+*English version: [README.md](README.md)*
 
 ---
 
@@ -115,7 +115,8 @@
 
 1. انقر نقراً مزدوجاً على **`uninstall.command`**.
 2. اختر اللغة وأكد عملية الحذف.
-3. سيقوم السكربت تلقائياً بتعطيل اللوحة، ومسح كافة ملفاتها وحزمها من النظام، وتفريغ الذاكرة المؤقتة.
+3. اختيارياً، حدد لوحة مفاتيح عربية بديلة لتفعيلها تلقائياً قبل الحذف.
+4. سيقوم السكربت تلقائياً بتعطيل اللوحة، ومسح كافة ملفاتها وحزمها من النظام، وتفريغ الذاكرة المؤقتة.
 
 ---
 
